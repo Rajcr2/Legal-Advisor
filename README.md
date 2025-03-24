@@ -1,8 +1,5 @@
 # Legal-Advisor
 
-
-# Prophet-Driven Quant Forecasting.
-
 ## Introduction
 
 This is the Next Version of my Prophet based Stock Forecasting (https://github.com/Rajcr2/Prophet-Forecasting) Project.
