@@ -2,19 +2,16 @@
 
 ## Introduction
 
-This is the Next Version of my Prophet based Stock Forecasting (https://github.com/Rajcr2/Prophet-Forecasting) Project.
-
-So, In this project, I have developed a scalable time-series forecasting pipeline using Prophet, designed for quantitative financial forecasting to predict the future stock price of a given company or entity, specifically focusing on its performance month/year ahead. The pipeline integrates critical features such as seasonality, holiday effects, and trend analysis to predict future stock price movements and to provide accurate and actionable forecasts.
+In this project, I am developing a RAG Based Legal advisor system. which gives you legal advice as per your query.
 
 ### Key Features
 
-1. **Prophet-based time series forecasting**
-2. **Incorporates MACD, Change %, RSI (7) as regressors**
-3. **Significant reduction in the forecast deviation from ~400-500 points (old version) to ~200-250 points in the improved model.**
+1. **Uses Legal law documents (vector embedded to extract more relevant data) to form response.**
+2. **Mistral-7B (Ollama) lighweight llm**
 
 ### Objectives
 
-The primary goal of this project is to create a time-series forecasting system that can:
+The primary goal of this project is to provide most accurate legal solution  :
 
 1. Analyze historical data to predict future trends.
 2. Provide Investor a realistic Forecast.
