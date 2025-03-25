@@ -60,11 +60,12 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
    ```
    python Store.py
    ``` 
-   YOu will see output like below :
+   You will get output like below :
    
 ![image](https://github.com/user-attachments/assets/db02c381-7c15-4894-bb98-0b84b1e52c98)
 
-8.   After, that Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the dashboard on your browser.
+7.   Lets, generate vector Embeddings now.s   
+7.   After, that Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the dashboard on your browser.
    ```
    streamlit run QP_main.py
    ``` 
