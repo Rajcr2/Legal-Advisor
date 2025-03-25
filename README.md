@@ -70,48 +70,19 @@ Other Utility Libraries : **matplotlib**, **numpy**.
 
 ### Output
 
-1. #### ADANI Green Ltd.
+1. #### Legal Advisor
 
-**Forecast** :
+https://github.com/user-attachments/assets/558d1134-e2bf-4326-95b1-d4a4b32da48a
 
-![image](https://github.com/user-attachments/assets/c29a90f7-676e-4b98-90cf-34b2e729bda2)
-
-**Insight** :
-
-![image](https://github.com/user-attachments/assets/e1b843f2-d87c-47be-8e6e-c4bd0a0df9bc)
+2. #### Prompt Evaluator
 
 
-2. #### Reliance Industries Ltd.
 
-**Forecast** :
-
-![image](https://github.com/user-attachments/assets/8419597c-558f-454a-aac4-f2d0600c5160)
-
-**Insight** :
-
-![image](https://github.com/user-attachments/assets/40cb3ef5-19db-4101-af07-3f96ec9ab123)
-
-
-3. #### INFOSYS
-
- **Forecast** :
-
-![image](https://github.com/user-attachments/assets/cb39d095-c768-4ff6-8eba-5971e7372ab9)
-
-
-**Insight** :  
-
-![image](https://github.com/user-attachments/assets/2856e767-73da-4380-9281-ff2d374339f7)
 
 
 ### Conclusion
 
 
-
-https://github.com/user-attachments/assets/729014b5-e0e1-4d84-b49b-685154747cdf
-
-
-Based on error metrics, the model has provided valuable insights. For example, it has identified TCS as highly stable and best for long-term investment, even though Indian market currently facing downturn. Additionally, the model has effectively captured trends, achieving approximately 40-60% accuracy in actual forecasts.
 
 
 
