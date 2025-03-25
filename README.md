@@ -11,60 +11,59 @@ In this project, I am developing a RAG Based Legal advisor system. which gives y
 
 ### Objectives
 
-The primary goal of this project is to provide most accurate legal solution  :
-
-1. Analyze historical data to predict future trends.
-2. Provide Investor a realistic Forecast.
-3. Based on the metrics to generate insights that will provide investor a assistance.
+The primary goal of this project generate response based on stored pdf's in database if context is missing then use llm and provide most close accurate legal solution.
 
 ### Prerequisites
 To run this project, you need to install the following libraries:
 ### Required Libraries
 
 - **Python 3.12+**
-- **Pandas**: This library performs data manipulation and analysis also provides powerful data structures like dataframes.
-- **Prophet**: A forecasting tool for time-series data, designed to handle trends, seasonality and holidat effects.
-- **Scikit-Learn**: Scikit-learn library provides tools for machine learning, including scalling, classification, regression, clustering, and dimensionality reduction.
-- **Streamlit**: Streamlit is a framework that builds interactive, data-driven web applications directly in python.  
+- **PostgreSQL**: This library performs data manipulation and analysis also provides powerful data structures like dataframes.
+- **ChromaDB**: A forecasting tool for time-series data, designed to handle trends, seasonality and holidat effects.
+- **Ollama**: Scikit-learn library provides tools for machine learning, including scalling, classification, regression, clustering, and dimensionality reduction.
+- **Langchain**: Streamlit is a framework that builds interactive, data-driven web applications directly in python.  
 
-Other Utility Libraries : **matplotlib**, **numpy**.
+Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 
 ### Installation
 
    ```
-   pip install pandas
-   pip install prophet
-   pip install numpy
-   pip install streamlit
-   pip install scikit-learn
-   pip install matplotlib
+   pip install ollama
+   pip install langchain
+   pip install psycopg2-binary
+   pip install pdfplumber
+   pip install puMupdf
+   pip install chromadb
+   pip install time
+   pip install requests
    ```
 
 ### Procedure
 
-1.   Create new directory **'Quant Prophet'**.
+1.   Create new directory **'Legal Advisor'**.
 2.   Inside that directory/folder create new environment.
    
    ```
-   python -m venv qp
+   python -m venv legaladv
    ```
 
-  Now, activate this **'qp'** venv.
+  Now, activate this **'legaladv'** venv.
   
 4.   Clone this Repository :
 
    ```
-   git clone https://github.com/Rajcr2/QuantProphet.git
+   git clone https://github.com/Rajcr2/LegalAdvisor.git
    ```
 5.   Now, Install all mentioned required libraries in your environment.
-6.   After, that Run **'QP_main.py'** file from Terminal. To activate the dashboard on your browser.
+6.   After, that Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the dashboard on your browser.
    ```
    streamlit run QP_main.py
    ``` 
 7. Now, move to your browser.
-8. Upload the csv file from your local machine or you can use sample csv file given here.
-9. After, uploading set the model parameters such as changepoint or forecast period.
-10. Then within few minutes prophet will train the model after that you will see forecast results along with insights.
+8. Ask any legal question like this **"What are the provisions for anticipatory bail under the Bhartiya Nyaya Sanhita ?"**.
+   and all set you will get response just verify that.
+
+Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLm knowledge.
 
 
 
