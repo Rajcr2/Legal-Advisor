@@ -18,17 +18,18 @@ To run this project, you need to install the following libraries:
 ### Required Libraries
 
 - **Python 3.12+**
-- **PostgreSQL**: This library performs data manipulation and analysis also provides powerful data structures like dataframes.
-- **ChromaDB**: A forecasting tool for time-series data, designed to handle trends, seasonality and holidat effects.
-- **Ollama**: Scikit-learn library provides tools for machine learning, including scalling, classification, regression, clustering, and dimensionality reduction.
-- **Langchain**: Streamlit is a framework that builds interactive, data-driven web applications directly in python.  
+- **PostgreSQL**: PostgreSQL is a powerful, open-source object-relational database system known for its reliability along with SQL compliance.
+- **ChromaDB**: ChromaDB is an open-source embedding database designed for storing, querying, and retrieving vector embeddings for RAG applications.
+- **Ollama**: Ollama is a lightweight tool that lets you run large language models (LLMs) like Mistral-7B locally.
+- **Langchain**: LangChain is a framework that helps developers build applications powered by large language models (LLMs) by connecting them with data sources for for tasks like chatbots, RAG, and agents.
 
 Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 
 ### Installation
 
    ```
-   pip install ollama
+   ollama serve
+   ollama run mistral
    pip install langchain
    pip install psycopg2-binary
    pip install pdfplumber
@@ -55,7 +56,15 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
    git clone https://github.com/Rajcr2/LegalAdvisor.git
    ```
 5.   Now, Install all mentioned required libraries in your environment.
-6.   After, that Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the dashboard on your browser.
+6.   Firstly Store legal documents in PostgreSQL for that run following command.
+   ```
+   python Store.py
+   ``` 
+   YOu will see output like below :
+   
+![image](https://github.com/user-attachments/assets/db02c381-7c15-4894-bb98-0b84b1e52c98)
+
+8.   After, that Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the dashboard on your browser.
    ```
    streamlit run QP_main.py
    ``` 
@@ -63,27 +72,24 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 8. Ask any legal question like this **"What are the provisions for anticipatory bail under the Bhartiya Nyaya Sanhita ?"**.
    and all set you will get response just verify that.
 
-Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLm knowledge.
+Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLM knowledge.
 
+### PromptEvaluator
 
+The main reason for developing this tool is because, prompt allows you indirectly set how much power you want to give to llm and here, in case if for specific question uploaded documents are just not enough sometimes at that prompt which is leveraging Documents & LLM equally is required. 
+Thats where PromptEvaluator is needed which helps in designing and testing different parallely without affecting whole main RAG project.
 
 ### Output
 
 1. #### Legal Advisor
+
+
 
 https://github.com/user-attachments/assets/558d1134-e2bf-4326-95b1-d4a4b32da48a
 
 2. #### Prompt Evaluator
 
 https://github.com/user-attachments/assets/14f4e4b4-6fb9-42f1-82c1-eef0db0b0225
-
-
-
-
-
-
-
-
 
 ### Conclusion
 
