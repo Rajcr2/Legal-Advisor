@@ -70,7 +70,7 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
     
 ![Embeddings Part 1_Embeddings Part 2](https://github.com/user-attachments/assets/33f784c1-9fc5-4195-b528-74fc2f99c39b)
 
-8.   Now, we almost done. Just Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the UI Interface on your browser.
+8.   Now, we are almost done. Just Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the UI Interface on your browser.
    
     streamlit run Frontend.py
    
