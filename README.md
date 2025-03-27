@@ -58,7 +58,7 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 5.   Now, Install all mentioned required libraries in your environment.
 6.   Firstly Store legal documents in PostgreSQL for that run following command.
    ```
-   python Store.py
+   python Store_Testing.py
    ``` 
    You will get output like below :
    
@@ -66,11 +66,11 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 
 7.   Lets, generate vector Embeddings now. for that, Run following command :
    
-    python Embeddings.py
+    python Embeddings_Testing.py
     
 ![Embeddings Part 1_Embeddings Part 2](https://github.com/user-attachments/assets/33f784c1-9fc5-4195-b528-74fc2f99c39b)
 
-8.   Now, we almost done. Just Run **'streamlit run Frontend.py'** file from Terminal. To activate the UI Interface on your browser.
+8.   Now, we almost done. Just Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the UI Interface on your browser.
    
     streamlit run Frontend.py
    
