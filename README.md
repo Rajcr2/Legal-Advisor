@@ -77,7 +77,7 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
    Ask any legal question like this **"What are the provisions for anticipatory bail under the Bhartiya Nyaya Sanhita ?"** and get the **'legal Advice'**. 
 
 
-## Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLM knowledge.
+### Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLM knowledge.
 
 
 ### PromptEvaluator
