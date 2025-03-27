@@ -80,7 +80,7 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 ### Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLM knowledge.
 
 
-### PromptEvaluator
+## PromptEvaluator
 
 The main reason for developing this tool is because, prompt allows you indirectly to set how much power you want to give to llm and here, in case if for specific question uploaded documents are just not enough sometimes at that time a prompt is required which can leverage Documents & LLM equally to generate response. 
 So, Thats where PromptEvaluator is needed which helps in designing and testing different Prompts parallely without affecting whole main RAG project.
