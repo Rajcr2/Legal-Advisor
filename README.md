@@ -66,22 +66,19 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 
 7.   Lets, generate vector Embeddings now. for that, Run following command :
    
-    ```
     python Embeddings.py
-    ``` 
     
 ![Embeddings Part 1_Embeddings Part 2](https://github.com/user-attachments/assets/33f784c1-9fc5-4195-b528-74fc2f99c39b)
 
-9.     
-7.   After, that Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the dashboard on your browser.
-   ```
-   streamlit run QP_main.py
-   ``` 
-7. Now, move to your browser.
-8. Ask any legal question like this **"What are the provisions for anticipatory bail under the Bhartiya Nyaya Sanhita ?"**.
-   and all set you will get response just verify that.
+8.   Now, we almost done. Just Run **'streamlit run Frontend.py'** file from Terminal. To activate the UI Interface on your browser.
+   
+    streamlit run Frontend.py
+   
+   Ask any legal question like this **"What are the provisions for anticipatory bail under the Bhartiya Nyaya Sanhita ?"** and get the **'legal Advice'**. 
 
-Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLM knowledge.
+
+## Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on "BNS.pdf" legal doucment and Mistral LLM knowledge.
+
 
 ### PromptEvaluator
 
@@ -101,6 +98,7 @@ https://github.com/user-attachments/assets/558d1134-e2bf-4326-95b1-d4a4b32da48a
 https://github.com/user-attachments/assets/14f4e4b4-6fb9-42f1-82c1-eef0db0b0225
 
 ### Conclusion
+The Legal advisor is ready which acts as **Mini AI Advocate** you will see better version soon. Stay Tuned.
 
 
 
