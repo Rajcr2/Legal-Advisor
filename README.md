@@ -7,7 +7,7 @@ In this project, I am developing a RAG Based Legal advisor system. which gives y
 ### Key Features
 
 1. **Uses Legal law documents (vector embedded to extract more relevant data) to form response.**
-2. **Mistral-7B (Ollama) lighweight llm**
+2. **Mistral-7B (Ollama)**
 
 ### Objectives
 
@@ -64,7 +64,15 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
    
 ![image](https://github.com/user-attachments/assets/db02c381-7c15-4894-bb98-0b84b1e52c98)
 
-7.   Lets, generate vector Embeddings now.s   
+7.   Lets, generate vector Embeddings now. for that, Run following command :
+   
+    ```
+    python Embeddings.py
+    ``` 
+    
+![Embeddings Part 1_Embeddings Part 2](https://github.com/user-attachments/assets/33f784c1-9fc5-4195-b528-74fc2f99c39b)
+
+9.     
 7.   After, that Run **'streamlit run Frontend_Testing.py'** file from Terminal. To activate the dashboard on your browser.
    ```
    streamlit run QP_main.py
@@ -77,8 +85,8 @@ Currently, Model is in still developement stage I am adding more legal documents
 
 ### PromptEvaluator
 
-The main reason for developing this tool is because, prompt allows you indirectly set how much power you want to give to llm and here, in case if for specific question uploaded documents are just not enough sometimes at that prompt which is leveraging Documents & LLM equally is required. 
-Thats where PromptEvaluator is needed which helps in designing and testing different parallely without affecting whole main RAG project.
+The main reason for developing this tool is because, prompt allows you indirectly to set how much power you want to give to llm and here, in case if for specific question uploaded documents are just not enough sometimes at that time a prompt is required which can leverage Documents & LLM equally to generate response. 
+So, Thats where PromptEvaluator is needed which helps in designing and testing different Prompts parallely without affecting whole main RAG project.
 
 ### Output
 
