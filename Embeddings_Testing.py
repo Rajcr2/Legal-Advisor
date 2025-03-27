@@ -20,7 +20,7 @@ def get_mistral_embedding(texts):
             embeddings.append([])
     return embeddings
 
-def get_pdf_data_from_db():
+def get_pdf_data():
     conn = psycopg2.connect(
         dbname="RAG_db",
         user="postgres",
@@ -37,97 +37,91 @@ def get_pdf_data_from_db():
 
 def get_existing_sources(collection):
     try:
-        data = collection.get()
-        return set(meta['source'] for meta in data['metadatas'])
-    except Exception as e:
-        print(f"⚠️ Error reading from collection: {e}")
+        results = collection.get(include=["metadatas"])
+        sources = {meta["source"] for meta in results["metadatas"]}
+        return sources
+    except Exception:
         return set()
 
-def generate_embeddings_incrementally():
-    print("🔍 Checking for new or deleted PDFs...")
+def generate_embeddings():
+    print("🔄 Generating embeddings incrementally...")
+
+    pdf_data_list = get_pdf_data()
+    if not pdf_data_list:
+        print("❌ No documents found in PostgreSQL.")
+        return
+
     client = chromadb.PersistentClient(path="./chroma_db")
     collection = client.get_or_create_collection("legal_embeddings")
-
     existing_sources = get_existing_sources(collection)
-    pdf_data_list = get_pdf_data_from_db()
 
-    db_pdf_names = set(name for name, _ in pdf_data_list)
+    doc_count = 0
+    for pdf_name, pdf_binary in pdf_data_list:
+        if pdf_name in existing_sources:
+            print(f"✅ Vector embeddings already exist for '{pdf_name}'. Skipping.")
+            continue
 
-    to_add = []
-    to_add_data = {}
-    for name, binary in pdf_data_list:
-        if name not in existing_sources:
-            to_add.append(name)
-            to_add_data[name] = binary
-
-    to_remove = list(existing_sources - db_pdf_names)
-
-    print(f"📥 New PDFs to embed: {to_add}")
-    print(f"🗑️ PDFs to remove: {to_remove}")
-
-    # Step 1: Remove stale embeddings
-    if to_remove:
-        collection.delete(where={"source": {"$in": to_remove}})
-        print(f"✅ Removed embeddings for: {to_remove}")
-
-    # Step 2: Process new PDFs
-    law_chunks, metadata_list = [], []
-    for name in to_add:
         extracted_text = []
-        pdf_stream = io.BytesIO(to_add_data[name])
+        pdf_stream = io.BytesIO(pdf_binary)
         with pdfplumber.open(pdf_stream) as pdf:
             for page in pdf.pages:
                 text = page.extract_text()
                 if text:
                     extracted_text.append(text)
-        if extracted_text:
-            combined_text = "\n".join(extracted_text)
-            splitter = CharacterTextSplitter(separator="\n", chunk_size=1000, chunk_overlap=200)
-            chunks = splitter.split_text(combined_text)
-            law_chunks.extend(chunks)
-            metadata_list.extend([{"source": name}] * len(chunks))
 
-    if not law_chunks:
-        print("✅ No new chunks to embed.")
-        return
+        if not extracted_text:
+            print(f"⚠️ No text found in '{pdf_name}'. Skipping.")
+            continue
 
-    # Step 3: Embedding & storing
-    print(f"🔄 Embedding {len(law_chunks)} chunks with Mistral...")
-    batch_size = 5
-    embeddings = []
-    for i in range(0, len(law_chunks), batch_size):
-        batch = law_chunks[i:i+batch_size]
-        print(f"⏳ Batch {i//batch_size + 1}...")
-        start_time = time.time()
-        batch_embeddings = get_mistral_embedding(batch)
-        embeddings.extend(batch_embeddings)
-        print(f"✅ Batch done in {time.time() - start_time:.2f}s")
+        combined_text = "\n".join(extracted_text)
+        text_splitter = CharacterTextSplitter(separator="\n", chunk_size=1000, chunk_overlap=200)
+        chunks = text_splitter.split_text(combined_text)
 
-    if len(embeddings) != len(law_chunks):
-        print("❌ Mismatch in embeddings.")
-        return
+        if not chunks:
+            print(f"⚠️ No valid text chunks for '{pdf_name}'. Skipping.")
+            continue
 
-    collection.upsert(
-        ids=[f"doc_{int(time.time())}_{i}" for i in range(len(law_chunks))],
-        documents=law_chunks,
-        embeddings=embeddings,
-        metadatas=metadata_list
-    )
+        batch_size = 5
+        total_chunks = len(chunks)
+        embeddings = []  # ✅ Initialize embeddings inside the loop
 
-    print("✅ New embeddings saved successfully!")
+        print(f"\n📄 '{pdf_name}' split into {total_chunks} chunks. Processing in {total_chunks // batch_size + 1} batches...\n")
 
-def retrieve_relevant_laws(query):
-    try:
-        client = chromadb.PersistentClient(path="./chroma_db")
-        collection = client.get_collection("legal_embeddings")
-        query_embedding = get_mistral_embedding([query])
-        if not query_embedding or len(query_embedding[0]) == 0:
-            return ["❌ Query embedding failed."]
-        results = collection.query(query_embeddings=query_embedding, n_results=3)
-        return results["documents"][0] if "documents" in results else []
-    except Exception as e:
-        print(f"❌ Error during retrieval: {e}")
-        return ["Error retrieving legal information."]
+        for i in range(0, total_chunks, batch_size):
+            batch = chunks[i:i + batch_size]
+            print(f"⏳ Processing batch {i // batch_size + 1}/{(total_chunks // batch_size) + 1} for '{pdf_name}'...")
+            start_time = time.time()
+
+            try:
+                batch_embeddings = get_mistral_embedding(batch)
+                if len(batch_embeddings) == len(batch):  # Ensure embedding length matches batch size
+                    embeddings.extend(batch_embeddings)
+                else:
+                    print(f"⚠️ Skipping batch {i // batch_size + 1} due to embedding mismatch.")
+            except Exception as e:
+                print(f"❌ Error in embedding batch {i // batch_size + 1}: {e}")
+                continue
+
+            print(f"✅ Batch {i // batch_size + 1} completed in {time.time() - start_time:.2f}s.\n")
+
+        # Push new embeddings
+        ids = [f"{pdf_name}_chunk_{i}" for i in range(len(chunks))]
+        metadatas = [{"source": pdf_name} for _ in range(len(chunks))]
+
+        collection.upsert(
+            ids=ids,
+            documents=chunks,
+            embeddings=embeddings,
+            metadatas=metadatas
+        )
+
+        doc_count += 1
+        print(f"✅ Embedded '{pdf_name}' successfully.")
+
+    if doc_count == 0:
+        print("📭 No new PDFs were embedded.")
+    else:
+        print(f"\n🎉 Finished embedding {doc_count} new document(s).")
 
 if __name__ == "__main__":
-    generate_embeddings_incrementally()
+    generate_embeddings()
