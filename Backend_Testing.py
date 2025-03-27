@@ -4,7 +4,7 @@ import psycopg2
 import pymupdf  # PyMuPDF
 from io import BytesIO
 import ollama
-from Embedded_Testing import retrieve_relevant_laws  # ✅ Use similarity search
+from Embeddings_Testing import retrieve_relevant_laws  # ✅ Use similarity search
 
 def fetch_pdf_from_db(pdf_name):
     conn = psycopg2.connect(
