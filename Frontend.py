@@ -1,8 +1,5 @@
-# Frontend_testing.py
-
 import streamlit as st
-#from Backend_Testing import generate_combined_response
-from Backend_Testing_OneP import generate_combined_response
+from Backend_Testing import generate_combined_response
 
 st.set_page_config(page_title="Legal Advisor Chatbot", layout="centered")
 
