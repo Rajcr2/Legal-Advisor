@@ -4,13 +4,13 @@ import psycopg2
 import pymupdf  # PyMuPDF
 from io import BytesIO
 import ollama
-from Embeddings_Testing import retrieve_relevant_laws  # ✅ Use similarity search
+from Embedded_Testing import retrieve_relevant_laws  # ✅ Use similarity search
 
 def fetch_pdf_from_db(pdf_name):
     conn = psycopg2.connect(
         dbname="RAG_db",  # 🔁 Same as Embeddings.py
         user="postgres",
-        password="rajcar18",
+        password="password",
         host="localhost",
         port="5432"
     )
