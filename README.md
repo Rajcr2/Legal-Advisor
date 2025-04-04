@@ -89,9 +89,8 @@ So, Thats where PromptEvaluator is needed which helps in designing and testing d
 
 1. #### Legal Advisor
 
+https://github.com/user-attachments/assets/0bd99e2d-38d4-4fb2-a9bd-ce98d031904e
 
-
-https://github.com/user-attachments/assets/558d1134-e2bf-4326-95b1-d4a4b32da48a
 
 2. #### Prompt Evaluator
 
