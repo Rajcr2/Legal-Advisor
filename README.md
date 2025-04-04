@@ -60,15 +60,15 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
    ```
    python Store.py
    ``` 
-   You will get output like below :
+   When pdfs are succefully stored you will get output like below :
    
-![image](https://github.com/user-attachments/assets/db02c381-7c15-4894-bb98-0b84b1e52c98)
+![store](https://github.com/user-attachments/assets/c2ec3694-1e8b-40ab-a0b5-09e18b1c0102)
 
 7.   Lets, generate vector Embeddings now. for that, Run following command :
    
     python Embeddings.py
     
-![Embeddings Part 1_Embeddings Part 2](https://github.com/user-attachments/assets/33f784c1-9fc5-4195-b528-74fc2f99c39b)
+![embeddings](https://github.com/user-attachments/assets/2e3fd628-96f6-4628-b0a0-9dbfc26d9dea)
 
 8.   Now, we are almost done. Just Run **'streamlit run Frontend.py'** file from Terminal. To activate the UI Interface on your browser.
    
