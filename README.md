@@ -4,11 +4,6 @@
 
 In this project, I am developing a RAG Based Legal advisor system. which gives you legal advice as per your query.
 
-### Key Features
-
-1. **Uses Legal law documents (vector embedded to extract more relevant data) to form response.**
-2. **Mistral-7B (Ollama)**
-
 ### Objectives
 
 The primary goal of this project generate response based on stored pdf's in database if context is missing then use llm and provide most close accurate legal solution.
@@ -29,7 +24,7 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 
    ```
    ollama serve
-   ollama run mistral
+   ollama run llama3
    pip install langchain
    pip install psycopg2-binary
    pip install pdfplumber
@@ -76,27 +71,31 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
    
    Ask any legal question like this **"What are the provisions for anticipatory bail under the Bhartiya Nyaya Sanhita ?"** and get the **'legal Advice'**. 
 
+### Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on limited legal documents (all are uploaded here) and llama3 LLM knowledge.
 
-### Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on limited legal doucment and llama3 LLM knowledge.
+### Output
 
+1. #### Legal Advisor
+
+https://github.com/user-attachments/assets/2b45d4e0-4bdc-4372-86d7-365522d36d11
+
+                                    _____________________________________________________________
 
 ## PromptEvaluator
 
 The main reason for developing this tool is because, prompt allows you indirectly to set how much power you want to give to llm and here, in case if for specific question uploaded documents are just not enough sometimes at that time a prompt is required which can leverage Documents & LLM equally to generate response. 
 So, Thats where PromptEvaluator is needed which helps in designing and testing different Prompts parallely without affecting whole main RAG project.
 
-### Output
 
-1. #### Legal Advisor
+https://github.com/user-attachments/assets/97ef5a04-2786-474e-85a4-8769e848fffe
 
-https://github.com/user-attachments/assets/0bd99e2d-38d4-4fb2-a9bd-ce98d031904e
+Along with Evaluating Mutiple Prompts at once, It also Benchmarks Prompts on the basis of various metrics such as **Hallucination Score, Latency, Perplexity** and **Semantic Similarity**.
+that directly helps in finding best structuring best possible prompt without chopping and changing main project each and every time.
 
-
-2. #### Prompt Evaluator
-
-https://github.com/user-attachments/assets/14f4e4b4-6fb9-42f1-82c1-eef0db0b0225
+![image](https://github.com/user-attachments/assets/e7e5c4ee-4b5d-44e0-b2da-0853a197502e)
 
 ### Conclusion
+
 The Legal advisor is ready which acts as **Mini AI Advocate** you will see better version soon. Stay Tuned.
 
 
