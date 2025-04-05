@@ -90,7 +90,7 @@ So, Thats where PromptEvaluator is needed which helps in designing and testing d
 https://github.com/user-attachments/assets/97ef5a04-2786-474e-85a4-8769e848fffe
 
 Along with Evaluating Mutiple Prompts at once, It also Benchmarks Prompts on the basis of various metrics such as **Hallucination Score, Latency, Perplexity** and **Semantic Similarity**.
-that directly helps in finding best structuring best possible prompt without chopping and changing main project each and every time.
+that directly helps in structuring best possible prompt without chopping and changing main project each and every time.
 
 ![image](https://github.com/user-attachments/assets/e7e5c4ee-4b5d-44e0-b2da-0853a197502e)
 
