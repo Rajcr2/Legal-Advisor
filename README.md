@@ -69,7 +69,7 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
    
     streamlit run Frontend.py
    
-   Ask any legal question like this **"What are the provisions for anticipatory bail under the Bhartiya Nyaya Sanhita ?"** and get the **'legal Advice'**. 
+   Ask any legal question like this **"What are Non-bailable offences under BNS ?"** and get the **'legal Advice'**. 
 
 ### Currently, Model is in still developement stage I am adding more legal documents one by the one. Currently, response you are seeing is based on limited legal documents (all are uploaded here) and llama3 LLM knowledge.
 
