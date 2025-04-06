@@ -15,7 +15,7 @@ To run this project, you need to install the following libraries:
 - **Python 3.12+**
 - **PostgreSQL**: PostgreSQL is a powerful, open-source object-relational database system known for its reliability along with SQL compliance.
 - **ChromaDB**: ChromaDB is an open-source embedding database designed for storing, querying, and retrieving vector embeddings for RAG applications.
-- **Ollama**: Ollama is a lightweight tool that lets you run large language models (LLMs) like Mistral-7B locally.
+- **Ollama**: Ollama is a lightweight tool that lets you run large language models (LLMs) like Mistral-7B, llama3 locally.
 - **Langchain**: LangChain is a framework that helps developers build applications powered by large language models (LLMs) by connecting them with data sources for for tasks like chatbots, RAG, and agents.
 
 Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
