@@ -79,7 +79,7 @@ Other Utility Libraries : **psycopg2**, **pdfplumber**, **pyMupdf**.
 
 https://github.com/user-attachments/assets/2b45d4e0-4bdc-4372-86d7-365522d36d11
 
-                               _____________________________________________________________
+                           _____________________________________________________________
 
 ## PromptEvaluator
 
