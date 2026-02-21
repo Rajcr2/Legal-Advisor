@@ -118,4 +118,28 @@ Ask any legal question like this **"My employer ignored my complaint, what are m
 
 https://github.com/user-attachments/assets/e3975903-e483-4f30-9dfa-000920a14f15
 
+_______
 
+This was about **Agentic System**. Tested the same system using DeepEval's pre-built metrics below is the more about it.
+
+## Evaluation Framework
+
+**Metrics Used** :
+- **Answer Relevancy**
+- **Faithfulness**
+- **Hallucination**
+- **Context Relevancy**
+- **Context Precision**
+- **Task Completion**
+- **Tool Correctness**
+
+Evaluation uses a **Golden Dataset** for repeatable testing and regression detection.
+
+Run **'python Evaluation.py'** file from Terminal.
+   
+    python Evaluation.py
+
+1. First it will built Test cases like this.
+<img width="1920" height="1080" alt="Test case 1" src="https://github.com/user-attachments/assets/11ac9e7c-fa13-4e2c-bf2a-4e9f2e5ac816" />
+
+2. Then 
