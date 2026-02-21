@@ -6,7 +6,7 @@ The system performs multi-step ReAct reasoning, retrieves and then filters legal
 
 ## Overview
 
-This project implements an **Semi-Autonomous ReAct-style AI agent** capable of :
+It implements an **Semi-Autonomous ReAct-style AI agent** that is capable of :
 
 - **Understanding legal questions**
 - **Planning multi-step reasoning**
@@ -19,7 +19,7 @@ The system demonstrates **agentic behavior**, **non-deterministic reasoning** an
 
 ## Key Features
 
-- **Autonomous LangGraph agent workflow**
+- **LangGraph agent workflow**
 - **ReAct-style reasoning** (Think → Act → Observe → Answer)
 - **Retrieval-Augmented Generation** (RAG)
 - **Vector-based semantic search**
@@ -54,7 +54,7 @@ To run this project, you need to install the following libraries :
 - **PostgreSQL**: PostgreSQL is a powerful, open-source object-relational database system known for its reliability along with SQL compliance.
 - **ChromaDB**: ChromaDB is an open-source embedding database designed for storing, querying, and retrieving vector embeddings for RAG applications.
 - **Ollama**: Ollama is a lightweight tool that lets you run large language models (LLMs) like Mistral-7B, llama3 locally.
-- **Langgraph**: LangGraph is a framework for building stateful, multi-step AI agent workflows. It enables controlled reasoning, tool orchestration, and conditional execution using graph-based pipelines.
+- **LangGraph**: LangGraph is a framework for building stateful, multi-step AI agent workflows. It enables controlled reasoning, tool orchestration, and conditional execution using graph-based pipelines.
 - **Deepeval**: DeepEval is an evaluation framework for LLM and RAG systems that measures answer quality, faithfulness, hallucination, retrieval relevance, and overall task performance using structured metrics.
 
 Other Utility Libraries : **psycopg2**, **textwrap**.
@@ -135,11 +135,66 @@ This was about **Agentic System**. Tested the same system using DeepEval's pre-b
 
 Evaluation uses a **Golden Dataset** for repeatable testing and regression detection.
 
+<img width="1446" height="606" alt="golden dataset eval" src="https://github.com/user-attachments/assets/e16d87f8-c97f-4c57-a323-b4f6debb189f" />
+
+
 Run **'python Evaluation.py'** file from Terminal.
    
     python Evaluation.py
 
-1. First it will built Test cases like this.
+1. **First it create Test cases like this.**
+
 <img width="1920" height="1080" alt="Test case 1" src="https://github.com/user-attachments/assets/11ac9e7c-fa13-4e2c-bf2a-4e9f2e5ac816" />
 
-2. Then 
+
+2. **Then evaluation starts.**
+
+<img width="1383" height="316" alt="running main" src="https://github.com/user-attachments/assets/43a6979b-a772-49ed-a9ac-7fa1f87d4266" />
+
+3. **as evaluation progresses, we get Test cases Results like this for All Test cases and in the end Final Evaluation Output.**
+
+
+#### Test Case 1
+<img width="1920" height="1080" alt="evaluation tc 1" src="https://github.com/user-attachments/assets/31204a76-20d0-4a9b-8608-b802be20ead9" />
+
+#### Test Case 2
+<img width="1920" height="1080" alt="evaluation tc 2" src="https://github.com/user-attachments/assets/c674e1bb-6f47-42af-a45e-9f8a5aecf4e2" />
+
+#### Test Case 3
+<img width="1920" height="1080" alt="evaluation tc 3" src="https://github.com/user-attachments/assets/59db4f34-cbd5-4cb1-84ee-54b0796d4851" />
+
+#### Test Case 4
+<img width="1920" height="1080" alt="evaluation tc 4" src="https://github.com/user-attachments/assets/560bbf46-dbf2-47f0-8730-f24141bae7f8" />
+
+
+## Evaluation Output
+
+<img width="1920" height="1080" alt="Evaluation final" src="https://github.com/user-attachments/assets/3f424cf1-59f4-4400-b535-3acfcd72850f" />
+
+
+_____
+
+
+### What Makes This System Agentic?
+
+- **LLM decides next action dynamically**
+- **Multi-step reasoning loop with state tracking**
+- **Tool usage (Retriever, Selector, Answer)**
+- **Autonomous stopping based on context stability**
+- **Non-deterministic decision making**
+- **Fully testable agent execution pipeline**
+
+### Future Improvements
+
+- **Add CI/CD automated testing**
+- **Expand Golden dataset for broader test coverage**
+- **Improve retrieval precision & ranking**
+- **Introduce multi-agent architecture**
+- **Deploy as API / web interface**
+- **Add monitoring & observability**
+
+
+## Conclusion
+The Legal Advisor is ready and acts as a **"Mini AI Legal Advocate"**, functioning as a **semi-autonomous agentic system** that **retrieves legal knowledge**, **performs contextual reasoning** and **generates grounded answers** through a **structured RAG workflow**.
+Thanks for Reading.
+
