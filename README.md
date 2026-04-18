@@ -1,21 +1,26 @@
 # Legal-Advisor
 
 ## Introduction
-I have built an **Agentic Legal Question-Answering System** using **LangGraph**, **Retrieval-Augmented Generation (RAG)** and **DeepEval**.
+I have built an **Agentic Legal Question-Answering System** using an agentic RAG approach.
 The system performs multi-step ReAct reasoning, retrieves and then filters legal context, generates grounded answers with respect to query and also, evaluates QA system performance using structured semantic and retrieval-based metrics.
+The system is exposed both as a REST API and as a MCP tool, so it can be used by users through UI as well as by other AI systems.
 
 ## Overview
 
-It implements an **Semi-Autonomous ReAct-style AI agent** that is capable of :
+The system behaves like a **Semi-Autonomous ReAct-style AI agent** that is capable of :
 
 - **Understanding legal questions**
 - **Planning multi-step reasoning**
 - **Retrieving relevant legal documents with respect to questions**
 - **Filtering useful context from retrieved context**
 - **Generating grounded answers**
-- **Evaluating answer quality automatically**
 
-The system demonstrates **agentic behavior**, **non-deterministic reasoning** and evaluation-driven development.
+Along with this, system also includes :
+
+- **A REST API (FastAPI) layer for the agent's external access**  
+- **An FastMCP server for other AI systems so, they can call it as a tool**
+- **A ReAct based chat UI for interactive querying**
+- **DeepEval based evaluation pipeline to evaluate answer quality**
 
 ## Key Features
 
@@ -23,15 +28,13 @@ The system demonstrates **agentic behavior**, **non-deterministic reasoning** an
 - **ReAct-style reasoning** (Think → Act → Observe → Answer)
 - **Retrieval-Augmented Generation** (RAG)
 - **Vector-based semantic search**
-- **Context filtering** (Selector)
+- **LLM based retrieved Context filtering** (Selector)
 - **Grounded answers**
 - **Multi-step reasoning loop**
+- **FastAPI-based REST API**
+- **MCP server for AI-to-AI integration**
 - **Evaluation framework using DeepEval**
 - **Golden dataset regression testing**
-
-## System Architecture
-
-<img width="350" height="692" alt="System Architecture - Final" src="https://github.com/user-attachments/assets/1d503668-b3fa-4958-b6e1-41ca99b6e04d" />
 
 ## Agent Workflow
 
@@ -45,6 +48,19 @@ The agent follows a **ReAct-style autonomous loop** :
 
 The agent stops naturally when retrieved knowledge stabilizes.
 
+## Tech Stack
+
+| Layer           | Tech                            |
+| --------------- | ------------------------------- |
+| **Agent**       | LangGraph (ReAct pattern)       |
+| **LLM**         | Mistral 7B via Ollama           |
+| **RAG**         | ChromaDB + SentenceTransformers (all-MiniLM-L6-v2) |
+| **Backend**     | FastAPI, Pydantic                         |
+| **MCP**         | FastMCP                         |
+| **Frontend**    | React (Vite)                    |
+| **Storage**     | PostgreSQL (PDFs)               |
+| **Evaluation**  | DeepEval                        |
+
 ### Prerequisites
 To run this project, you need to install the following libraries :
 
@@ -55,6 +71,7 @@ To run this project, you need to install the following libraries :
 - **ChromaDB**: ChromaDB is an open-source embedding database designed for storing, querying, and retrieving vector embeddings for RAG applications.
 - **Ollama**: Ollama is a lightweight tool that lets you run large language models (LLMs) like Mistral-7B, llama3 locally.
 - **LangGraph**: LangGraph is a framework for building stateful, multi-step AI agent workflows. It enables controlled reasoning, tool orchestration, and conditional execution using graph-based pipelines.
+- **Node.js**: Node is a JavaScript runtime for building scalable backend apps.
 - **Deepeval**: DeepEval is an evaluation framework for LLM and RAG systems that measures answer quality, faithfulness, hallucination, retrieval relevance, and overall task performance using structured metrics.
 
 Other Utility Libraries : **psycopg2**, **textwrap**.
@@ -68,7 +85,28 @@ Other Utility Libraries : **psycopg2**, **textwrap**.
    pip install psycopg2-binary
    pip install chromadb
    pip install deepeval
+
+   cd frontend
+   npm install
    ```
+
+### API
+
+| Method | Endpoint    | Use                     |
+| ------ | ----------- | ----------------------- |
+| GET    | /health     | Check if API is running |
+| POST   | /api/v1/ask | Ask legal question      |
+
+**Docs**: http://localhost:8000/docs
+
+### MCP Tool
+
+The agent is also exposed as a tool:
+   ```
+   ask_legal_question(question: str) -> str
+   ```
+This allows tools like Claude Desktop or Cursor to call it directly.
+
 
 ### Procedure
 
@@ -107,17 +145,25 @@ ________
 
 ________
 
-8.   Now, we are almost done. Now, Run **'python ReAct.py'** file from Terminal. This will start "Legal Advisor" in Terminal.
+8.   Now, we are almost done. Now, start backend server.
+     Run Uvicorn to start the FastAPI server from terminal. This will start the backend API.     
    
-    python ReAct.py
+     uvicorn api:app --reload 
 
+9.   Next step is in another, Terminal we have start the frontend UI. Firstly we have to navigate to frontend folder and run the developement server using npm.
+     This will open chatbot in browser at **http://localhost:5173** .
+
+     cd frontend
+     npm run dev
 
 Ask any legal question like this **"My employer ignored my complaint, what are my rights ? Under POSH Act ?"** and get the **'legal Advice'**.
 
+
+
+
 ### Output
 
-https://github.com/user-attachments/assets/e3975903-e483-4f30-9dfa-000920a14f15
-
+https://github.com/user-attachments/assets/68067416-694a-4201-81de-2443ca277dbd
 _______
 
 This was about **Agentic System**. Tested the same system using DeepEval's pre-built metrics below is the more about it.
@@ -180,21 +226,16 @@ _____
 - **LLM decides next action dynamically**
 - **Multi-step reasoning loop with state tracking**
 - **Tool usage (Retriever, Selector, Answer)**
-- **Autonomous stopping based on context stability**
+- **Autonomous stopping until it has enough information**
 - **Non-deterministic decision making**
 - **Fully testable agent execution pipeline**
-
-### Future Improvements
-
-- **Add CI/CD automated testing**
-- **Expand Golden dataset for broader test coverage**
-- **Improve retrieval precision & ranking**
-- **Introduce multi-agent architecture**
-- **Deploy as API / web interface**
-- **Add monitoring & observability**
-
 
 ## Conclusion
 The Legal Advisor is ready and acts as a **"Mini AI Legal Advocate"**, functioning as a **semi-autonomous agentic system** that **retrieves legal knowledge**, **performs contextual reasoning** and **generates grounded answers** through a **structured RAG workflow**.
 Thanks for Reading.
+
+##  Final Thoughts
+
+This **Legal Advisor** was mainly about exploring how to move from a simple LLM app to **"Mini AI Legal Advocate"** something more agent-like and production-ready system 
+that combines **retrieval, contextual reasoning, APIs and evaluation** into one system — and can be used both by users and other AI tools.
 
