@@ -147,18 +147,21 @@ ________
 
 8.   Now, we are almost done. Now, start backend server.
      Run Uvicorn to start the FastAPI server from terminal. This will start the backend API.     
-   
-     uvicorn api:app --reload 
 
-9.   Next step is in another, Terminal we have start the frontend UI. Firstly we have to navigate to frontend folder and run the developement server using npm.
+     ```
+     uvicorn api:app --reload
+     ``` 
+      
+
+8.   Next step is in another, Terminal we have start the frontend UI. Firstly we have to navigate to frontend folder and run the developement server using npm.
      This will open chatbot in browser at **http://localhost:5173** .
 
+     ```
      cd frontend
      npm run dev
+     ``` 
 
 Ask any legal question like this **"My employer ignored my complaint, what are my rights ? Under POSH Act ?"** and get the **'legal Advice'**.
-
-
 
 
 ### Output
